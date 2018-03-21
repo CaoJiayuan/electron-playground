@@ -1,4 +1,4 @@
-import { app, BrowserWindow,ipcMain } from 'electron'
+import { app, BrowserWindow,ipcMain, Menu} from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -21,7 +21,8 @@ function createWindow () {
     height: 576,
     useContentSize: true,
     width: 1024,
-    frame:false,
+    titleBarStyle:'hiddenInset',
+    // frame:false,
     hasShadow:true,
     // webPreferences: {
     //   devTools: false
@@ -34,6 +35,7 @@ function createWindow () {
     mainWindow = null
   })
   handleIpc();
+  Menu.setApplicationMenu(new Menu())
 }
 
 function handleIpc(){

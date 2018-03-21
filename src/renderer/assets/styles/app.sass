@@ -1,0 +1,21 @@
+@import "vars"
+
+body
+    background-color: $body-color
+
+::-webkit-scrollbar
+    display: none
+
+#app-main
+    background: transparent
+#app-body
+    margin-top: $margin-top
+#title-bar
+    z-index: 1000
+    background: $title-bar-color
+    opacity: .95
+    -webkit-app-region: drag
+
+
+::selection
+    background: transparent
