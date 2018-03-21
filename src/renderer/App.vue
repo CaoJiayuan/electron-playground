@@ -10,8 +10,8 @@
   }
 </script>
 
-<style>
+<style lang="sass">
   /* CSS */
   @import "~vuetify/dist/vuetify.css";
-  @import "app.css";
+  @import "app.sass";
 </style>

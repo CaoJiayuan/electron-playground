@@ -22,7 +22,10 @@ function createWindow () {
     useContentSize: true,
     width: 1024,
     frame:false,
-    hasShadow:true
+    hasShadow:true,
+    // webPreferences: {
+    //   devTools: false
+    // }
   })
 
   mainWindow.loadURL(winURL)
