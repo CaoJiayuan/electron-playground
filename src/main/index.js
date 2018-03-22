@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, Menu, Notification } from 'electron'
+import { app, BrowserWindow, ipcMain, Menu} from 'electron'
 
 const APP_VERSION = '0.0.1'
 
@@ -39,11 +39,6 @@ function createWindow () {
   })
   handleIpc()
   Menu.setApplicationMenu(new Menu())
-
-  new Notification({
-    title: 'Demo',
-    body: `Version ${APP_VERSION}`
-  }).show()
 }
 
 function handleIpc () {
