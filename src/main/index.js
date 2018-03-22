@@ -1,4 +1,4 @@
-import { app, BrowserWindow,ipcMain, Menu, Notification} from 'electron'
+import { app, BrowserWindow, ipcMain, Menu, Notification } from 'electron'
 
 const APP_VERSION = '0.0.1'
 
@@ -23,9 +23,9 @@ function createWindow () {
     height: 768,
     useContentSize: true,
     width: 1360,
-    titleBarStyle:'hidden',
+    titleBarStyle: 'hidden',
     // frame:false,
-    hasShadow:true,
+    hasShadow: true,
     // webPreferences: {
     //   devTools: false
     // }
@@ -37,16 +37,16 @@ function createWindow () {
   mainWindow.on('closed', () => {
     mainWindow = null
   })
-  handleIpc();
+  handleIpc()
   Menu.setApplicationMenu(new Menu())
 
   new Notification({
-    title : 'Demo',
-    body : `Version ${APP_VERSION}`
+    title: 'Demo',
+    body: `Version ${APP_VERSION}`
   }).show()
 }
 
-function handleIpc(){
+function handleIpc () {
   ipcMain.on('close', () => {
     app.quit()
   })
