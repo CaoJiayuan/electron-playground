@@ -32,11 +32,6 @@
   @import "~vuetify/dist/vuetify.css"
   @import "assets/styles/app"
 
-  $title-btn-size: 20px
-
-  .title-btn
-    height: $title-btn-size
-    width: $title-btn-size
 
   .bottom-holder
     height: $footer-height

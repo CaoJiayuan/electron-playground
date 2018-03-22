@@ -23,8 +23,8 @@ function createWindow () {
     height: 768,
     useContentSize: true,
     width: 1360,
-    titleBarStyle: 'hidden',
-    // frame:false,
+    // titleBarStyle: 'hidden',
+    frame:false,
     hasShadow: true,
     // webPreferences: {
     //   devTools: false
