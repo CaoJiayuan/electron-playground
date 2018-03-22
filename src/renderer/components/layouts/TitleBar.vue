@@ -1,39 +1,33 @@
 <template>
   <v-toolbar app id="title-bar" flat fixed dense :height="titleBarHeight">
-    <template v-if="!isWin">
-      <v-btn flat @click="closeWin" class="title-btn">
-          <v-icon>close</v-icon>
-      </v-btn>
-    </template>
+    <title-action v-if="!isWin"></title-action>
     <v-spacer class="dragger" :style="{height : titleBarHeight + 'px'}"></v-spacer>
     <v-toolbar-title class="dragger">EvueDemo</v-toolbar-title>
     <v-spacer class="dragger" :style="{height : titleBarHeight + 'px'}"></v-spacer>
-    <template v-if="isWin">
-        <v-btn flat @click="closeWin" class="title-btn">
-            <v-icon>close</v-icon>
-        </v-btn>
-    </template>  
+    <title-action v-if="isWin"></title-action>
   </v-toolbar>
 </template>
 
 <script>
-  import {ipcRenderer} from 'electron'
+  import {ipcRenderer} from 'electron';
+  import TitleAction from "./TitleAction.vue";
+
   export default {
-    name: 'title-bar',
+    name      : 'title-bar',
     data() {
       return {
         titleBarHeight: 32
       };
     },
-    computed: {
-      isWin(){
-        return process.platform === 'win32'
+    computed  : {
+      isWin() {
+        return process.platform === 'win32';
       }
     },
-    components: {},
+    components: {TitleAction},
     methods   : {
-      closeWin(){
-        ipcRenderer.send('close')
+      closeWin() {
+        ipcRenderer.send('close');
       }
     },
     mounted() {
@@ -46,11 +40,6 @@
   };
 </script>
 <style lang="sass">
-  $title-btn-size: 32px
 
-  .title-btn
-    height: $title-btn-size
-    width: $title-btn-size
-    min-width: $title-btn-size
 
 </style>
