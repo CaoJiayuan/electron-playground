@@ -1,7 +1,7 @@
 <template>
     <v-container grid-list-md id="app-body" app ref="wrapper">
         <v-layout row wrap>
-            <v-flex md6  :key="i"  v-for="(item, i) in items">
+            <v-flex xs6  :key="i"  v-for="(item, i) in items">
                 <v-card ripple :key="i">
                     <v-card-title><span>{{ item.name }}</span></v-card-title>
                     <v-card-media height="320" :src="'https://lorempixel.com/480/480/?2545' + i">
@@ -23,6 +23,9 @@
           },
           {
             name : '赵四',
+          },
+          {
+            name : '老王',
           },
         ]
       }
