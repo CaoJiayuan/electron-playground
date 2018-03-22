@@ -1,4 +1,6 @@
-import { app, BrowserWindow,ipcMain, Menu} from 'electron'
+import { app, BrowserWindow,ipcMain, Menu, Notification} from 'electron'
+
+const APP_VERSION = '0.0.1'
 
 /**
  * Set `__static` path to static files in production
@@ -18,10 +20,10 @@ function createWindow () {
    * Initial window options
    */
   mainWindow = new BrowserWindow({
-    height: 576,
+    height: 768,
     useContentSize: true,
-    width: 1024,
-    titleBarStyle:'hiddenInset',
+    width: 1360,
+    titleBarStyle:'hidden',
     // frame:false,
     hasShadow:true,
     // webPreferences: {
@@ -30,12 +32,18 @@ function createWindow () {
   })
 
   mainWindow.loadURL(winURL)
+  // mainWindow.loadURL('http://localhost:8080')
 
   mainWindow.on('closed', () => {
     mainWindow = null
   })
   handleIpc();
   Menu.setApplicationMenu(new Menu())
+
+  new Notification({
+    title : 'Demo',
+    body : `Version ${APP_VERSION}`
+  }).show()
 }
 
 function handleIpc(){

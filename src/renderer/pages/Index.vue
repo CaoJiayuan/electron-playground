@@ -1,33 +1,38 @@
 <template>
-  <v-app id="app-main">
-      <v-container id="app-body" app ref="wrapper" :style="{height:height+'px'}">
-          <div>
-              <v-card ripple :key="i" v-for="(item, i) in items">
-                  <v-card-title>{{ item.nickname }}</v-card-title>
-              </v-card>
-          </div>
-      </v-container>
-  </v-app>
+    <v-container grid-list-md id="app-body" app ref="wrapper">
+        <v-layout row wrap>
+            <v-flex md6  :key="i"  v-for="(item, i) in items">
+                <v-card ripple :key="i">
+                    <v-card-title><span>{{ item.name }}</span></v-card-title>
+                    <v-card-media height="320" :src="'https://lorempixel.com/480/480/?2545' + i">
+                    </v-card-media>
+                </v-card>
+            </v-flex>
+        </v-layout>
+    </v-container>
 </template>
 <script>
-import {ipcRenderer} from 'electron';
-import BScroll from 'better-scroll'
-export default {
-    data(){
-        return {
-          height: 576,
-          items : []
-        }
+
+  export default {
+    components: {},
+    data () {
+      return {
+        items: [
+          {
+            name : '张三',
+          },
+          {
+            name : '赵四',
+          },
+        ]
+      }
     },
-    mounted(){
-      this.$http.get('http://demo.test/api/users').then(re => this.items = re.data.data)
-//      this.$nextTick(() => new BScroll(this.$refs.wrapper))
+    mounted () {
+
     },
-    methods:{
-        closeWin(){
-            ipcRenderer.send('close')
-        }
+    methods: {
+
     },
 
-}
+  }
 </script>
