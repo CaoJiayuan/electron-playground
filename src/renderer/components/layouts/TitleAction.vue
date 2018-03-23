@@ -49,7 +49,7 @@
 <style lang="sass">
 
 .title-action
-  position: absolute
+  z-index: 1002
 
 $title-btn-size: 14px
 
