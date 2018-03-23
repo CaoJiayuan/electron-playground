@@ -39,7 +39,7 @@ function createWindow () {
     mainWindow = null
   })
   handleIpc()
-  Menu.setApplicationMenu(new Menu())
+  setMenu()
 }
 
 function handleIpc () {
@@ -58,6 +58,14 @@ function handleIpc () {
       maximize = true
     }
   })
+}
+
+function setMenu () {
+  if (process.platform === 'darwin') {
+    Menu.setApplicationMenu(new Menu())
+  } else {
+    Menu.setApplicationMenu(null)
+  }
 }
 
 app.on('ready', createWindow)
