@@ -1,13 +1,13 @@
 <template>
-  <span style="margin: 0 5px;padding: 0" class="title-action">
+  <span style="margin: 0 5px;padding: 0" class="title-action" :style="{ right : isWin ? 0 : undefined }">
     <v-btn  @click="closeWin" icon class="title-btn close" :class="isWin ? 'pull-right' : 'pull-left' " color="red">
       <v-icon>close</v-icon>
     </v-btn>
-    <v-btn @click="miniWin" icon class="title-btn mini" :class="isWin ? 'pull-right' : 'pull-left' "  color="green">
-      <v-icon>remove</v-icon>
-    </v-btn>
     <v-btn @click="maxWin" icon class="title-btn max" :class="isWin ? 'pull-right' : 'pull-left' "  color="yellow">
       <v-icon>code</v-icon>
+    </v-btn>
+    <v-btn @click="miniWin" icon class="title-btn mini" :class="isWin ? 'pull-right' : 'pull-left' "  color="green">
+      <v-icon>remove</v-icon>
     </v-btn>
   </span>
 </template>
