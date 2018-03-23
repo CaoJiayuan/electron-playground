@@ -5,6 +5,9 @@
     <v-toolbar-title class="dragger">EvueDemo</v-toolbar-title>
     <v-spacer class="dragger" :style="{height : titleBarHeight + 'px'}"></v-spacer>
     <title-action v-if="isWin"></title-action>
+    <v-btn icon>
+      <v-icon>dehaze</v-icon>
+    </v-btn>
   </v-toolbar>
 </template>
 
@@ -16,7 +19,7 @@
     name      : 'title-bar',
     data() {
       return {
-        titleBarHeight: 32
+        titleBarHeight: 36
       };
     },
     computed  : {

@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, Menu} from 'electron'
+import { app, BrowserWindow, ipcMain, Menu } from 'electron'
 
 const APP_VERSION = '0.0.1'
 
@@ -14,6 +14,7 @@ let mainWindow
 const winURL = process.env.NODE_ENV === 'development'
   ? `http://localhost:9080`
   : `file://${__dirname}/index.html`
+let maximize = false
 
 function createWindow () {
   /**
@@ -24,7 +25,7 @@ function createWindow () {
     useContentSize: true,
     width: 1360,
     // titleBarStyle: 'hidden',
-    frame:false,
+    frame: false,
     hasShadow: true,
     // webPreferences: {
     //   devTools: false
@@ -44,6 +45,18 @@ function createWindow () {
 function handleIpc () {
   ipcMain.on('close', () => {
     app.quit()
+  })
+  ipcMain.on('mini', () => {
+    mainWindow.minimize()
+  })
+  ipcMain.on('max', () => {
+    if (maximize) {
+      mainWindow.unmaximize()
+      maximize = false
+    } else {
+      mainWindow.maximize()
+      maximize = true
+    }
   })
 }
 
