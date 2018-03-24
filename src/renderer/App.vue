@@ -1,6 +1,7 @@
 <template>
   <v-app id="app-main">
     <title-bar></title-bar>
+    <navigation></navigation>
     <v-content>
       <router-view></router-view>
       <div class="bottom-holder"></div>
@@ -12,9 +13,11 @@
 <script>
   import AppFooter from "./components/layouts/AppFooter.vue";
   import TitleBar from "./components/layouts/TitleBar.vue";
+  import Navigation from "./components/layouts/Navigation.vue";
 
   export default {
     components: {
+      Navigation,
       TitleBar,
       AppFooter
     },
