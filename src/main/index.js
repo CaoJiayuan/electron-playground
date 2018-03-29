@@ -1,36 +1,38 @@
 import { app, BrowserWindow, ipcMain, Menu } from 'electron'
 
 const APP_VERSION = '0.0.1'
+const isDev = process.env.NODE_ENV === 'development'
 
 /**
  * Set `__static` path to static files in production
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
  */
-if (process.env.NODE_ENV !== 'development') {
+if (!isDev) {
   global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
 }
 
 let mainWindow
-const winURL = process.env.NODE_ENV === 'development'
-  ? `http://localhost:9080`
-  : `file://${__dirname}/index.html`
+const winURL = isDev ? `http://localhost:9080` : `file://${__dirname}/index.html`
 let maximize = false
 
 function createWindow () {
-  /**
-   * Initial window options
-   */
-  mainWindow = new BrowserWindow({
+  let options = {
     height: 768,
     useContentSize: true,
     width: 1360,
     // titleBarStyle: 'hidden',
     frame: false,
-    hasShadow: true,
-    // webPreferences: {
-    //   devTools: false
-    // }
-  })
+    hasShadow: true
+  }
+  if (!isDev) {
+    options.webPreferences = {
+      devTools: false
+    }
+  }
+  /**
+   * Initial window options
+   */
+  mainWindow = new BrowserWindow(options)
 
   mainWindow.loadURL(winURL)
   // mainWindow.loadURL('http://localhost:8080')

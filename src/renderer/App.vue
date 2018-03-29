@@ -25,6 +25,9 @@
     data() {
       return {
       };
+    },
+    mounted(){
+
     }
   };
 </script>

@@ -1,9 +1,9 @@
 <template>
   <v-toolbar app id="title-bar" flat fixed dense :height="titleBarHeight">
     <title-action v-if="!isWin"></title-action>
-    <v-spacer class="dragger" :style="{height : titleBarHeight + 'px'}"></v-spacer>
+    <v-spacer class="dragger" :style="{height : titleBarHeight }"></v-spacer>
     <v-toolbar-title class="dragger">EvueDemo</v-toolbar-title>
-    <v-spacer class="dragger" :style="{height : titleBarHeight + 'px'}"></v-spacer>
+    <v-spacer class="dragger" :style="{height : titleBarHeight }"></v-spacer>
     <title-action v-if="isWin"></title-action>
     <v-btn icon v-if="!isWin" @click="toggleNav">
       <v-icon>dehaze</v-icon>
